@@ -42,3 +42,9 @@
     background-color: gray;
     border: none;
  }
+
+ .footer-content-left .logo{
+    width: 10vw;
+    border-radius: 10px;
+    margin-left: 10px;
+ }
