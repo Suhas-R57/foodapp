@@ -8,6 +8,13 @@ const LoginPopup = ({setShowLogin}) => {
 
   return (
     <div className='login-popup'>
+        <video autoPlay loop muted>
+            <source src="/videos/background.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+        </video>
+        <div className="login-popup-tagline">
+                <h1>Your Culinary Journey Begins Here</h1> {/* Add your chosen tagline here */}
+            </div>
       <form className="login-popup-container">
         <div className="login-popup-title">
             <h2>{currState}</h2>
