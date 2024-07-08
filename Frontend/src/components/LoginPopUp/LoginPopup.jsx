@@ -4,7 +4,7 @@ import { assets } from '../../assets/assets'
 
 const LoginPopup = ({setShowLogin}) => {
 
-    const [currState,setCurrState] = useState("Login")
+    const [currState,setCurrState] = useState("Sign up")
 
   return (
     <div className='login-popup'>
@@ -27,7 +27,7 @@ const LoginPopup = ({setShowLogin}) => {
         </div>
         <button>{currState=="Sign Up"?"Create account":"Login"}</button>
         <div className="login-popup-condition">
-            <input type='checkbox' rquired/>
+            <input type='checkbox' required/>
             <p>By continuing,i agree to the terms of use & privacy policy.</p>
         </div>
         {currState==="Login"
