@@ -1,6 +1,6 @@
 /* General styles */
 body {
-  font-family: 'Arial', sans-serif;
+  font-family: Outfit ,'Arial', sans-serif;
   background-color: #f4f4f9;
   color: #333;
   margin: 0;
@@ -19,6 +19,7 @@ body {
 
 /* Title of the food item */
 .FoodItemCalorie h1 {
+  text-align: center;
   font-size: 2em;
   margin-bottom: 20px;
   color: #2c3e50;
@@ -36,6 +37,7 @@ body {
 }
 
 .nutritional-values h2 {
+  text-align: center;
   font-size: 1.5em;
   margin-bottom: 10px;
   color: tomato;
@@ -58,6 +60,7 @@ body {
 
 /* Exercise info section */
 .exercise-info h2 {
+  text-align: center;
   font-size: 1.5em;
   margin-bottom: 10px;
   color: tomato;
@@ -65,7 +68,7 @@ body {
 
 .exercise-info ul {
   list-style: none;
-  padding: 0;
+  padding-left: 30%;
 }
 
 .exercise-info li {
@@ -75,8 +78,8 @@ body {
 }
 
 .exercise-info img {
-  width: 40px;
-  height: 40px;
+  width: 70px;
+  /* height: 40px; */
   margin-right: 10px;
 }
 
