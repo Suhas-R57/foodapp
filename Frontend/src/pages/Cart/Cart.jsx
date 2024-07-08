@@ -60,8 +60,8 @@ const Cart = () => {
               <b>₹{getTotalCartAmount()===0?0:getTotalCartAmount()+50}</b>
             </div>
           </div>
-          <button onClick={()=>navigte('/order')}>PROCEED TO CHECKOUT</button>
-        </div>a
+          <button onClick={()=>navigate('/order')}>PROCEED TO CHECKOUT</button>
+        </div>
         <div className="cart-promocode">
           <div>
             <p>If You have a promo code,Enter it here</p>
