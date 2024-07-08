@@ -61,3 +61,14 @@
 .food-item-counter img{
     width: 30px;
 }
+.view-calorie-button{
+    position: relative;
+    top:-35px;
+    left: 140px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 6px;
+    border-radius: 50px;
+    background-color: tomato;
+}

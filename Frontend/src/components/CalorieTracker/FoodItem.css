@@ -1,0 +1,107 @@
+/* General styles */
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f4f4f9;
+  color: #333;
+  margin: 0;
+  padding: 0;
+}
+
+/* Container for the food item details */
+.FoodItemCalorie {
+  max-width: 800px;
+  margin: 50px auto;
+  padding: 20px;
+  background: #fff;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  border-radius: 8px;
+}
+
+/* Title of the food item */
+.FoodItemCalorie h1 {
+  font-size: 2em;
+  margin-bottom: 20px;
+  color: #2c3e50;
+}
+
+/* Calories span */
+.FoodItemCalorie .calories {
+  color: #e74c3c;
+  font-weight: bold;
+}
+
+/* Nutritional values section */
+.nutritional-values {
+  margin-bottom: 30px;
+}
+
+.nutritional-values h2 {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+  color: tomato;
+}
+
+.nutritional-values table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.nutritional-values td {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.nutritional-values td:first-child {
+  font-weight: bold;
+  color: #7f8c8d;
+}
+
+/* Exercise info section */
+.exercise-info h2 {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+  color: tomato;
+}
+
+.exercise-info ul {
+  list-style: none;
+  padding: 0;
+}
+
+.exercise-info li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.exercise-info img {
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+}
+
+.exercise-info li {
+  font-size: 1.1em;
+  color: #2c3e50;
+}
+
+/* Add some hover effects to the list items */
+.exercise-info li:hover {
+  color: #e74c3c;
+}
+
+/* Media queries for responsiveness */
+@media (max-width: 768px) {
+  .FoodItemCalorie {
+    margin: 20px;
+    padding: 15px;
+  }
+
+  .FoodItemCalorie h1 {
+    font-size: 1.5em;
+  }
+
+  .exercise-info li {
+    font-size: 1em;
+  }
+}
