@@ -5,7 +5,7 @@ import './FoodItem.css';
 import { assets } from '../../assets/assets';
 import { StoreContext } from '../../context/StoreContext';
 
-const FoodItem = ({ id, name, price, description, image }) => {
+const FoodItem = ({ id, name, price,calorie, description, image }) => {
   const { cartItems, addToCart, removeFromCart } = useContext(StoreContext);
   const navigate = useNavigate(); // Initialize useNavigate
 
@@ -33,6 +33,7 @@ const FoodItem = ({ id, name, price, description, image }) => {
         </div>
         <p className="food-item-desc">{description}</p>
         <p className="food-item-price">₹{price}</p>
+        <p className="food-item-calorie">{calorie}g</p>
         <button className="view-calorie-button" onClick={handleViewCalorie}>
           View Calorie
         </button>

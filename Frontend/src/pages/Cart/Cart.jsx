@@ -62,13 +62,36 @@ const Cart = () => {
           </div>
           <button onClick={()=>navigate('/order')}>PROCEED TO CHECKOUT</button>
         </div>
-        <div className="cart-promocode">
+        <div className="calorie-count">
           <div>
-            <p>If You have a promo code,Enter it here</p>
-            <div className='cart-promocode-input'>
-              <input type="text" placeholder='promo code'/>
-              <button>Submit</button>
+          <div className="cart-items-title">
+          <p>Items</p>
+          <p>Title</p>
+          <p>Calories</p>
+          <p>Quantity</p>
+          <p>Total calories</p>
+          </div>
+        <br/>
+        <hr/>
+        {food_list.map((item,index)=>{
+          if(cartItems[item._id]>0)
+          {
+            return(
+              <div>
+              <div className="cart-items-title cart-items-item">
+                <img src={item.image} alt="" />
+                <p>{item.name}</p>
+                <p>{item.calorie}</p>
+                <p>{cartItems[item._id]}</p>
+                <p>{item.calorie*cartItems[item._id]}</p>
+                <p onClick={()=>removeFromCart(item._id)} className='cross'>x</p>
+              </div>
+              <hr/>
             </div>
+          
+            )
+          }
+        })}
           </div>
         </div>
       </div>

@@ -36,6 +36,13 @@
     font-weight: 500;
     margin: 10px 0px;
 }
+.food-item-calorie{
+    position: relative;
+    top:-35px;
+    left: 140px;
+    display: flex;
+   
+}
 .food-item-img-container{
     position: relative;
 }
