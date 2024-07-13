@@ -3,6 +3,8 @@ import cors from "cors"
 import { connect } from "mongoose"
 import { connectDB } from "./config/db.js"
 import foodRouter from "./routes/foodRoute.js"
+import 'dotenv/config.js'
+import userRouter from "./routes/userRoute.js"
 
 
 const app = express()
@@ -18,6 +20,8 @@ connectDB();
 //api endpoint
 app.use("/api/food",foodRouter)
 app.use("/images",express.static('uploads'))
+app.use("/api/user",userRouter)
+
 app.get("/",(req,res)=>{
     res.send("API Working")
 })

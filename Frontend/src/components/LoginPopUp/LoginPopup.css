@@ -18,14 +18,15 @@
 }
 .login-popup-tagline {
     position: absolute;
-    top: 12%; /* Adjust the position as needed */
+    top: 12%; 
     width: 100%;
     text-align: center;
     color: tomato;
-    font-size: 2rem; /* Adjust the size as needed */
+    font-size: 2rem; 
     font-weight: bold;
     z-index: 0;
 }
+
 
 .login-popup-container{
     place-self: center;
