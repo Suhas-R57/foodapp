@@ -4,6 +4,7 @@ import { assets } from '../../assets/assets'
 import axios from "axios"
 import { toast } from 'react-toastify'
 
+
 const Add = ({url}) => {
     // const url = "http://localhost:4000";
     const [image,setImage] = useState(false);
@@ -11,6 +12,7 @@ const Add = ({url}) => {
         name:"",
         description:"",
         price:"",
+        calorie:"",
         category:"Salad"
     })
 
@@ -26,6 +28,7 @@ const Add = ({url}) => {
         formData.append("name",data.name)
         formData.append("description",data.description)
         formData.append("price",Number(data.price))
+        formData.append("calorie",Number(data.calorie))
         formData.append("category",data.category)
         formData.append("image",image)
         const response = await axios.post(`${url}/api/food/add`,formData);
@@ -34,6 +37,7 @@ const Add = ({url}) => {
                 name:"",
                 description:"",
                 price:"",
+                Calorie:"",
                 category:"Salad"
             });
             setImage(false);
@@ -79,6 +83,10 @@ const Add = ({url}) => {
             <div className="add-price flex-col">
                 <p>Product price</p>
                 <input onChange={onChangeHandler} value={data.price} type='Number' name='price' placeholder='$20' />
+            </div>
+            <div className="add-calorie flex-col">
+                <p>Product calorie</p>
+                <input onChange={onChangeHandler} value={data.calorie} type='Number' name='calorie' placeholder='20' />
             </div>
         </div>
         <button type='submit' className='add-btn'>ADD</button>
