@@ -37,7 +37,7 @@ const Add = ({url}) => {
                 name:"",
                 description:"",
                 price:"",
-                Calorie:"",
+                calorie:"",
                 category:"Salad"
             });
             setImage(false);
