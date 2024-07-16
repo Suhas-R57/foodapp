@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import './NutritionInfo.css'
+import './NutritionInfo.css';
 
 const NutritionInfo = () => {
   const [food, setFood] = useState('');
@@ -29,7 +29,8 @@ const NutritionInfo = () => {
   };
 
   return (
-    <div>
+    <div className='box'>
+    <div className="container">
       <h1>Nutrition Info</h1>
       <input
         type="text"
@@ -39,28 +40,66 @@ const NutritionInfo = () => {
       />
       <button onClick={fetchNutritionData}>Get Nutrition Info</button>
 
-      {error && <p style={{ color: 'red' }}>{error}</p>}
+      {error && <p className="error">{error}</p>}
 
       {nutrition && (
         <div>
           {nutrition.map((item, index) => (
-            <div key={index}>
+            <div key={index} className="nutrition-item">
               <h2>{item.name}</h2>
-              <p>Calories: {item.calories}</p>
-              <p>Serving Size (g): {item.serving_size_g}</p>
-              <p>Total Fat (g): {item.fat_total_g}</p>
-              <p>Saturated Fat (g): {item.fat_saturated_g}</p>
-              <p>Protein (g): {item.protein_g}</p>
-              <p>Sodium (mg): {item.sodium_mg}</p>
-              <p>Potassium (mg): {item.potassium_mg}</p>
-              <p>Cholesterol (mg): {item.cholesterol_mg}</p>
-              <p>Total Carbohydrates (g): {item.carbohydrates_total_g}</p>
-              <p>Fiber (g): {item.fiber_g}</p>
-              <p>Sugar (g): {item.sugar_g}</p>
+              <table>
+                <tbody>
+                  <tr>
+                    <td>Calories:</td>
+                    <td>{item.calories}</td>
+                  </tr>
+                  <tr>
+                    <td>Serving Size (g):</td>
+                    <td>{item.serving_size_g}</td>
+                  </tr>
+                  <tr>
+                    <td>Total Fat (g):</td>
+                    <td>{item.fat_total_g}</td>
+                  </tr>
+                  <tr>
+                    <td>Saturated Fat (g):</td>
+                    <td>{item.fat_saturated_g}</td>
+                  </tr>
+                  <tr>
+                    <td>Protein (g):</td>
+                    <td>{item.protein_g}</td>
+                  </tr>
+                  <tr>
+                    <td>Sodium (mg):</td>
+                    <td>{item.sodium_mg}</td>
+                  </tr>
+                  <tr>
+                    <td>Potassium (mg):</td>
+                    <td>{item.potassium_mg}</td>
+                  </tr>
+                  <tr>
+                    <td>Cholesterol (mg):</td>
+                    <td>{item.cholesterol_mg}</td>
+                  </tr>
+                  <tr>
+                    <td>Total Carbohydrates (g):</td>
+                    <td>{item.carbohydrates_total_g}</td>
+                  </tr>
+                  <tr>
+                    <td>Fiber (g):</td>
+                    <td>{item.fiber_g}</td>
+                  </tr>
+                  <tr>
+                    <td>Sugar (g):</td>
+                    <td>{item.sugar_g}</td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
           ))}
         </div>
       )}
+    </div>
     </div>
   );
 };
