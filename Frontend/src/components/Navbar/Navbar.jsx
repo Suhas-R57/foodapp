@@ -22,11 +22,11 @@ const Navbar = ({setShowLogin}) => {
     <div className='navbar'>
       <Link to='/'><img src={assets._logo} alt="" className="logo" /></Link>
       <ul className='navbar-menu'>
-        <Link t0='/'onClick={()=>setMenu("home")} className={menu==="home"?"active":""}>Home</Link>
+        <Link to='/'onClick={()=>setMenu("home")} className={menu==="home"?"active":""}>Home</Link>
         <a href='#explore-menu' onClick={()=>setMenu("menu")} className={menu==="menu"?"active":""}>Menu</a>
         
         <a href='#footer' onClick={()=>setMenu("contact-us")} className={menu==="contact-us"?"active":""}>Contact us</a>
-        <Link to="/nutritioninfo">Nutrition Info</Link>
+        <Link to="/nutritioninfo" onClick={()=>setMenu("Nutrition-info")} className={menu==="Nutrition-info"?"active":""}>Nutrition Info</Link>
       </ul>
       <div className="navbar-right">
         <img src={assets.search_icon} alt="" />
