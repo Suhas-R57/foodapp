@@ -1,44 +1,73 @@
-// src/pages/FoodCalorie/FoodItemCalorie.jsx
 import React from 'react';
+import { useLocation } from 'react-router-dom';
 import './FoodItem.css';
-import { useParams } from 'react-router-dom';
-import { foodData } from '../../assets/FoodCalorie';
-
 
 const FoodItem = () => {
-  const { id } = useParams();
-  const foodItem = foodData.find(item => item.id === parseInt(id));
+  const location = useLocation();
+  const { foodDetails } = location.state || {};
 
-  if (!foodItem) {
+  if (!foodDetails) {
     return <div>Food item not found</div>;
   }
 
   return (
-    <div className="FoodItemCalorie">
-      <h1>{foodItem.name} has a total of <span className="calories">{foodItem.calories} Calories</span></h1>
-      <div className="nutritional-values">
-        <h2>Nutritional Values</h2>
-        <table>
-          <tbody>
-            {Object.keys(foodItem.nutritionalValues).map((key) => (
-              <tr key={key}>
-                <td>{key}:</td>
-                <td>{foodItem.nutritionalValues[key]}</td>
+    <div className="food-item-calorie">
+      <h1 >{foodDetails.name} has a total of <span className="calories">{foodDetails.calories} Calories</span></h1>
+      <div className="content">
+        <div className="nutritional-values">
+          <h2>Nutritional Values</h2>
+          <table>
+            <tbody>
+              <tr>
+                <td>Carbohydrates:</td>
+                <td>{foodDetails.carbohydrates_total_g} g</td>
               </tr>
+              <tr>
+                <td>Cholesterol:</td>
+                <td>{foodDetails.cholesterol_mg} mg</td>
+              </tr>
+              <tr>
+                <td>Saturated Fat:</td>
+                <td>{foodDetails.fat_saturated_g} g</td>
+              </tr>
+              <tr>
+                <td>Total Fat:</td>
+                <td>{foodDetails.fat_total_g} g</td>
+              </tr>
+              <tr>
+                <td>Fiber:</td>
+                <td>{foodDetails.fiber_g} g</td>
+              </tr>
+              <tr>
+                <td>Potassium:</td>
+                <td>{foodDetails.potassium_mg} mg</td>
+              </tr>
+              <tr>
+                <td>Protein:</td>
+                <td>{foodDetails.protein_g} g</td>
+              </tr>
+              <tr>
+                <td>Sodium:</td>
+                <td>{foodDetails.sodium_mg} mg</td>
+              </tr>
+              <tr>
+                <td>Sugar:</td>
+                <td>{foodDetails.sugar_g} g</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div className="exercise-info">
+          <h2>To burn {foodDetails.calories} calories you will have to:</h2>
+          <ul>
+            {foodDetails.exercises.map((exercise) => (
+              <li key={exercise.name}>
+                <img src={`/images/${exercise.name1.toLowerCase().replace(/ /g, '_')}.png`} alt={exercise.name} />
+               <b> {exercise.name} for <span className='span'>{exercise.duration}</span></b>
+              </li>
             ))}
-          </tbody>
-        </table>
-      </div>
-      <div className="exercise-info">
-        <h2>To burn {foodItem.calories} calories you will have to:</h2>
-        <ul>
-          {foodItem.exercises.map((exercise) => (
-            <li key={exercise.name}>
-              <img src={exercise.image} alt={exercise.name} />
-              {exercise.name} for {exercise.duration}
-            </li>
-          ))}
-        </ul>
+          </ul>
+        </div>
       </div>
     </div>
   );

@@ -1,46 +1,45 @@
-/* General styles */
-body {
-  font-family: Outfit ,'Arial', sans-serif;
-  background-color: #f4f4f9;
-  color: #333;
-  margin: 0;
-  padding: 0;
-}
-
-/* Container for the food item details */
-.FoodItemCalorie {
-  max-width: 800px;
-  margin: 50px auto;
+.food-item-calorie {
+  display: block;
   padding: 20px;
-  background: #fff;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  font-family: Arial, sans-serif;
+  background-color: #f9f9f9;
   border-radius: 8px;
+  max-width: 800px;
+  margin: 50px ;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Title of the food item */
-.FoodItemCalorie h1 {
+.food-item-calorie h1 {
+  /* font-size: 24px; */
+  color: #333;
   text-align: center;
-  font-size: 2em;
   margin-bottom: 20px;
-  color: #2c3e50;
 }
 
-/* Calories span */
-.FoodItemCalorie .calories {
-  color: #e74c3c;
+.food-item-calorie .calories {
+  color: tomato;
   font-weight: bold;
 }
 
-/* Nutritional values section */
-.nutritional-values {
-  margin-bottom: 30px;
+.food-item-calorie .content {
+  /* display: flex; */
+  display: inline;
+  justify-content: space-between;
+  align-items: flex-start;
 }
 
-.nutritional-values h2 {
-  text-align: center;
-  font-size: 1.5em;
-  margin-bottom: 10px;
-  color: tomato;
+.nutritional-values, .exercise-info {
+  flex: 1;
+  margin: 0 10px;
+}
+
+.nutritional-values h2, .exercise-info h2 {
+  margin-top: 20px;
+  font-size: 20px;
+  color: #333;
+  border-bottom: 2px solid tomato;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
 }
 
 .nutritional-values table {
@@ -48,63 +47,45 @@ body {
   border-collapse: collapse;
 }
 
-.nutritional-values td {
+.nutritional-values table th {
+  background-color: #333;
+  color: #fff;
   padding: 10px;
-  border-bottom: 1px solid #ddd;
+  text-align: left;
 }
 
-.nutritional-values td:first-child {
-  font-weight: bold;
-  color: #7f8c8d;
-}
-
-/* Exercise info section */
-.exercise-info h2 {
-  text-align: center;
-  font-size: 1.5em;
-  margin-bottom: 10px;
-  color: tomato;
+.nutritional-values table td {
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
 }
 
 .exercise-info ul {
   list-style: none;
-  padding-left: 30%;
+  padding: 0;
 }
 
 .exercise-info li {
   display: flex;
+  font-size: 20px;
   align-items: center;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
 }
 
-.exercise-info img {
-  width: 70px;
-  /* height: 40px; */
-  margin-right: 10px;
+.exercise-info li img {
+  width: 50px;
+  height: 50px;
+  margin-right: 70px;
+}
+.span{
+  color: tomato;
 }
 
-.exercise-info li {
-  font-size: 1.1em;
-  color: #2c3e50;
-}
-
-/* Add some hover effects to the list items */
-.exercise-info li:hover {
-  color: #e74c3c;
-}
-
-/* Media queries for responsiveness */
 @media (max-width: 768px) {
-  .FoodItemCalorie {
-    margin: 20px;
-    padding: 15px;
+  .food-item-calorie .content {
+    flex-direction: column;
   }
 
-  .FoodItemCalorie h1 {
-    font-size: 1.5em;
-  }
-
-  .exercise-info li {
-    font-size: 1em;
+  .nutritional-values, .exercise-info {
+    margin: 0 0 20px 0;
   }
 }
