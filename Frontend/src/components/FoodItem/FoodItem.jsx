@@ -13,25 +13,64 @@ const FoodItem = ({ id, name, price, calorie, description, image }) => {
   const handleViewCalorie = async () => {
     setLoading(true);
     try {
-      const query = name;
-      const response = await axios.get(`https://api.calorieninjas.com/v1/nutrition?query=${query}`, {
-        headers: { 'X-Api-Key': 'WDMuPc3Jh8bDEtUFTXw2KA==V756WLwROeXUef6f' },
-      });
-  
-      if (response.data.items && response.data.items.length > 0) {
-        const foodDetails = response.data.items[0];
-        foodDetails.exercises = [
-          { name: "Jog",name1:"jog", duration: "22 Minutes", image: "/images/jog.png" },
-          { name: "Do Power Yoga",name1:"power yoga", duration: "20 Minutes", image: "/images/power_yoga.png" },
-          { name: "Get a Gym Workout",name1:"gym workout", duration: "18 Minutes", image: "/images/gym_workout.png" },
-          { name: "Go for a Brisk Walk",name1:"brisk walk", duration: "33 Minutes", image: "/images/brisk_walk.png" }
-        ];
-        navigate(`/calorie/${name}`, { state: { foodDetails } });
-      }
+        const query = name;
+        const response = await axios.get(`https://api.calorieninjas.com/v1/nutrition?query=${query}`, {
+            headers: { 'X-Api-Key': 'WDMuPc3Jh8bDEtUFTXw2KA==V756WLwROeXUef6f' },
+        });
+
+        if (response.data.items && response.data.items.length > 0) {
+            const foodDetails = response.data.items[0];
+            const calories = foodDetails.calories;
+
+            const exercisesForCalories = (calories) => {
+                if (calories <= 50) {
+                    return [
+                        { name: "Jog", name1: "jog", duration: "5 Minutes", image: "/images/jog.png" },
+                        { name: "Do Power Yoga", name1: "power yoga", duration: "4 Minutes", image: "/images/power_yoga.png" },
+                        { name: "Get a Gym Workout", name1: "gym workout", duration: "4 Minutes", image: "/images/gym_workout.png" },
+                        { name: "Go for a Brisk Walk", name1: "brisk walk", duration: "8 Minutes", image: "/images/brisk_walk.png" }
+                    ];
+                } else if (calories <= 100) {
+                    return [
+                        { name: "Jog", name1: "jog", duration: "11 Minutes", image: "/images/jog.png" },
+                        { name: "Do Power Yoga", name1: "power yoga", duration: "10 Minutes", image: "/images/power_yoga.png" },
+                        { name: "Get a Gym Workout", name1: "gym workout", duration: "9 Minutes", image: "/images/gym_workout.png" },
+                        { name: "Go for a Brisk Walk", name1: "brisk walk", duration: "16 Minutes", image: "/images/brisk_walk.png" }
+                    ];
+                } else if (calories <= 200) {
+                    return [
+                        { name: "Jog", name1: "jog", duration: "22 Minutes", image: "/images/jog.png" },
+                        { name: "Do Power Yoga", name1: "power yoga", duration: "20 Minutes", image: "/images/power_yoga.png" },
+                        { name: "Get a Gym Workout", name1: "gym workout", duration: "18 Minutes", image: "/images/gym_workout.png" },
+                        { name: "Go for a Brisk Walk", name1: "brisk walk", duration: "33 Minutes", image: "/images/brisk_walk.png" }
+                    ];
+                } else if (calories <= 300) {
+                    return [
+                        { name: "Jog", name1: "jog", duration: "33 Minutes", image: "/images/jog.png" },
+                        { name: "Do Power Yoga", name1: "power yoga", duration: "30 Minutes", image: "/images/power_yoga.png" },
+                        { name: "Get a Gym Workout", name1: "gym workout", duration: "27 Minutes", image: "/images/gym_workout.png" },
+                        { name: "Go for a Brisk Walk", name1: "brisk walk", duration: "50 Minutes", image: "/images/brisk_walk.png" }
+                    ];
+                } else {
+                    return [
+                        { name: "Jog", name1: "jog", duration: "44 Minutes", image: "/images/jog.png" },
+                        { name: "Do Power Yoga", name1: "power yoga", duration: "40 Minutes", image: "/images/power_yoga.png" },
+                        { name: "Get a Gym Workout", name1: "gym workout", duration: "36 Minutes", image: "/images/gym_workout.png" },
+                        { name: "Go for a Brisk Walk", name1: "brisk walk", duration: "66 Minutes", image: "/images/brisk_walk.png" }
+                    ];
+                }
+            };
+
+            foodDetails.exercises = exercisesForCalories(calories);
+            navigate(`/calorie/${name}`, { state: { foodDetails } });
+        }
     } catch (error) {
-      console.error('Error fetching calorie data:', error);
+        console.error('Error fetching calorie data:', error);
+    } finally {
+        setLoading(false);
     }
-  };
+};
+
   
 
   return (
