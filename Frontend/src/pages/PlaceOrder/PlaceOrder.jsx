@@ -1,59 +1,102 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react';
 import './PlaceOrder.css';
 import { StoreContext } from '../../context/StoreContext';
 
 const PlaceOrder = () => {
+  const { getTotalCartAmount } = useContext(StoreContext);
+  const [deliveryInfo, setDeliveryInfo] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    street: '',
+    city: '',
+    state: '',
+    pinCode: '',
+    country: '',
+    phone: ''
+  });
 
-  const {getTotalCartAmount} = useContext(StoreContext)
-  
-  
+  const [alertMessage, setAlertMessage] = useState('');
+  const [alertType, setAlertType] = useState('');
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setDeliveryInfo({
+      ...deliveryInfo,
+      [name]: value
+    });
+  };
+
+  const isDeliveryInfoFilled = () => {
+    return Object.values(deliveryInfo).every((info) => info.trim() !== '');
+  };
+
+  const handleProceedToPayment = (e) => {
+    e.preventDefault();
+    if (isDeliveryInfoFilled()) {
+      setAlertMessage('Order confirmed \nThank you for ordering!');
+      setAlertType('success');
+    } else {
+      setAlertMessage('Please fill in all delivery information');
+      setAlertType('error');
+    }
+    setTimeout(() => {
+      setAlertMessage('');
+      setAlertType('');
+    }, 3000);
+  };
+
   return (
-    <form className='place-order'>
-      <div className="place-order-left">
-         <p className="title">Delivery Information</p>
-         <div className="multi-fields">
-          <input type="text" placeholder='First Name'/>
-          <input type="text" placeholder='Last Name'/>
-         </div>
-         <input type="text" placeholder='Email address'/>
-         <input type="text" placeholder='Street'/>
-         <div className="multi-fields">
-          <input type="text" placeholder='City'/>
-          <input type="text" placeholder='State'/>
-         </div>
-         <div className="multi-fields">
-          <input type="text" placeholder='Pin Code'/>
-          <input type="text" placeholder='Country'/>
-         </div>
-         <input type="text" placeholder='Phone' />
-      </div>
-      <div className="place-order-right">
-        <div className="cart-total">
-          <h2>Cart Totals</h2>
-          <div>
-            <div className="cart-total-details">
-              <p>Subtotal</p>
-              <p>₹{getTotalCartAmount()}</p>
-            </div>
-            <hr />
-            <div className="cart-total-details">
-              <p>Delivery Fee</p>
-              <p>₹{getTotalCartAmount()===0?0:50}</p>
-            </div>
-            <hr />
-            <div className="cart-total-details">
-              <b>Total</b>
-              <b>₹{getTotalCartAmount()===0?0:getTotalCartAmount()+50}</b>
-            </div>
-
+    <div>
+      <form className='place-order'>
+        <div className="place-order-left">
+          <p className="title">Delivery Information</p>
+          <div className="multi-fields">
+            <input type="text" name="firstName" placeholder='First Name' onChange={handleInputChange} />
+            <input type="text" name="lastName" placeholder='Last Name' onChange={handleInputChange} />
+          </div>
+          <input type="text" name="email" placeholder='Email address' onChange={handleInputChange} />
+          <input type="text" name="street" placeholder='Street' onChange={handleInputChange} />
+          <div className="multi-fields">
+            <input type="text" name="city" placeholder='City' onChange={handleInputChange} />
+            <input type="text" name="state" placeholder='State' onChange={handleInputChange} />
+          </div>
+          <div className="multi-fields">
+            <input type="text" name="pinCode" placeholder='Pin Code' onChange={handleInputChange} />
+            <input type="text" name="country" placeholder='Country' onChange={handleInputChange} />
+          </div>
+          <input type="text" name="phone" placeholder='Phone' onChange={handleInputChange} />
         </div>
-        <button >PROCEED TO PAYMENT</button>
+        <div className="place-order-right">
+          <div className="cart-total">
+            <h2>Cart Totals</h2>
+            <div>
+              <div className="cart-total-details">
+                <p>Subtotal</p>
+                <p>₹{getTotalCartAmount()}</p>
+              </div>
+              <hr />
+              <div className="cart-total-details">
+                <p>Delivery Fee</p>
+                <p>₹{getTotalCartAmount() === 0 ? 0 : 50}</p>
+              </div>
+              <hr />
+              <div className="cart-total-details">
+                <b>Total</b>
+                <b>₹{getTotalCartAmount() === 0 ? 0 : getTotalCartAmount() + 50}</b>
+              </div>
+            </div>
+            <button onClick={handleProceedToPayment}>PROCEED TO PAYMENT</button>
+          </div>
+        </div>
+      </form>
+      {alertMessage && (
+        <div className={`alert-box ${alertType === 'success' ? 'success' : 'error'} show`}>
+          {alertMessage}
+        </div>
+      )}
+    </div>
+  );
+};
 
-      </div>
-     </div> 
-      
-    </form>
-  )
-}
-
-export default PlaceOrder
+export default PlaceOrder;
