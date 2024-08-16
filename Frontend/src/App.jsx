@@ -6,6 +6,7 @@ import Home from './pages/Home/Home'
 import NutritionInfo from './pages/calorieapi/NutritionInfo'
 import Cart from './pages/Cart/Cart'
 import PlaceOrder from './pages/PlaceOrder/PlaceOrder'
+import Orders from './pages/orders/Orders'
 import Footer from './components/Footer/Footer'
 import FoodItemList from './pages/FoodCalorie/Calorie'
 import FoodItemCalorie from './components/CalorieTracker/FoodItem' // Import the new component
@@ -24,6 +25,7 @@ const App = () => {
         <Route path='/' element={<Home/>} />
         <Route path='/cart' element={<Cart/>} />
         <Route path='/order' element={<PlaceOrder/>} />
+        <Route path='/orders' element={<Orders />} />
         <Route path='/nutritioninfo' element={<NutritionInfo/>} />
         <Route path='/calorie' element={<FoodItemList/>} />
         <Route path='/calorie/:id' element={<FoodItemCalorie/>} /> {/* New Route */}

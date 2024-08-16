@@ -3,7 +3,7 @@ import './PlaceOrder.css';
 import { StoreContext } from '../../context/StoreContext';
 
 const PlaceOrder = () => {
-  const { getTotalCartAmount } = useContext(StoreContext);
+  const { getTotalCartAmount, cartItems, setOrders } = useContext(StoreContext);
   const [deliveryInfo, setDeliveryInfo] = useState({
     firstName: '',
     lastName: '',
@@ -34,6 +34,15 @@ const PlaceOrder = () => {
   const handleProceedToPayment = (e) => {
     e.preventDefault();
     if (isDeliveryInfoFilled()) {
+      const newOrder = {
+        id: Date.now(),  // Unique ID for the order
+        items: cartItems,
+        deliveryInfo,
+        totalAmount: getTotalCartAmount() + (getTotalCartAmount() === 0 ? 0 : 50),
+        date: new Date().toLocaleString(),
+      };
+      
+      setOrders(prevOrders => [...prevOrders, newOrder]);  // Save the order
       setAlertMessage('Order confirmed \nThank you for ordering!');
       setAlertType('success');
     } else {

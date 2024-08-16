@@ -5,7 +5,7 @@ import { assets } from '../../assets/assets';
 import { StoreContext } from '../../context/StoreContext';
 import axios from 'axios';
 
-const FoodItem = ({ id, name, price, calorie, description, image }) => {
+const FoodItem = ({ id, name, price,  description, image }) => {
   const { cartItems, addToCart, removeFromCart, url } = useContext(StoreContext);
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
@@ -105,8 +105,3 @@ const FoodItem = ({ id, name, price, calorie, description, image }) => {
 export default FoodItem;
 
 
-// 
-// apiKey WDMuPc3Jh8bDEtUFTXw2KA==V756WLwROeXUef6f
-//  <button className="view-calorie-button" onClick={handleViewCalorie}>
-//           View Calorie
-//         </button> 

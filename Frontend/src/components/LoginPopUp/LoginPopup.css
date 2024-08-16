@@ -85,3 +85,9 @@
     font-weight: 500;
     cursor: pointer;
 }
+
+.login-popup-tagline h1{
+    color: antiquewhite;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 50px;
+}
