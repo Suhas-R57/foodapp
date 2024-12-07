@@ -15,7 +15,7 @@ const FoodItem = ({ id, name, price,  description, image }) => {
     try {
         const query = name;
         const response = await axios.get(`https://api.calorieninjas.com/v1/nutrition?query=${query}`, {
-            headers: { 'X-Api-Key': 'WDMuPc3Jh8bDEtUFTXw2KA==V756WLwROeXUef6f' },
+            headers: { 'X-Api-Key': '<enter api key>' },
         });
 
         if (response.data.items && response.data.items.length > 0) {
